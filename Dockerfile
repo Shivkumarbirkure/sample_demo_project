@@ -11,9 +11,9 @@ WORKDIR /code
 # Copy the requirements file and install dependencies
 COPY requirements.txt /code/
 RUN pip install --no-cache-dir -r requirements.txt
-
+ENV PORT 8080
 # Copy the project code into the container
 COPY . /code/
 
 # Run the Django development server
-CMD python manage.py runserver 0.0.0.0:8000
+CMD python manage.py runserver 0.0.0.0:$PORT
